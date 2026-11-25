@@ -1,0 +1,421 @@
+/* ==========================================================================
+   ART TREASURE — NEOMORPHISM 2.0 & RESPONSIVE DESIGN SYSTEM
+   ========================================================================== */
+
+:root {
+  /* LIGHT THEME (Soft Porcelain / Slate Clay) */
+  --bg-color: #e5ebf3;
+  --surface-color: #e5ebf3;
+  --surface-accent: #eff4fa;
+  --text-main: #1f2937;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
+
+  --primary-accent: #6366f1;
+  --primary-hover: #4f46e5;
+  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
+  --secondary-accent: #06b6d4;
+  --pink-accent: #ec4899;
+  --danger-accent: #ef4444;
+  --success-accent: #10b981;
+
+  /* Tactile Neumorphic Dual Shadows (Top-Left Light, Bottom-Right Dark) */
+  --neu-light: #ffffff;
+  --neu-dark: #b8c4d6;
+
+  --neu-flat: 8px 8px 18px var(--neu-dark), -8px -8px 18px var(--neu-light);
+  --neu-flat-sm: 4px 4px 10px var(--neu-dark), -4px -4px 10px var(--neu-light);
+  --neu-flat-lg: 14px 14px 28px var(--neu-dark), -14px -14px 28px var(--neu-light);
+
+  --neu-pressed: inset 4px 4px 8px var(--neu-dark), inset -4px -4px 8px var(--neu-light);
+  --neu-pressed-sm: inset 2px 2px 5px var(--neu-dark), inset -2px -2px 5px var(--neu-light);
+
+  --neu-hover: 12px 12px 24px var(--neu-dark), -12px -12px 24px var(--neu-light);
+
+  --border-subtle: rgba(255, 255, 255, 0.7);
+  --border-dark: rgba(184, 196, 214, 0.4);
+
+  /* Skeleton Shimmer Tokens */
+  --skeleton-base: #d8e1ed;
+  --skeleton-highlight: #f3f6fb;
+}
+
+[data-theme='dark'] {
+  /* DARK THEME (Deep Carbon / Space Titanium) */
+  --bg-color: #12151d;
+  --surface-color: #161922;
+  --surface-accent: #1c212d;
+  --text-main: #f3f4f6;
+  --text-muted: #94a3b8;
+  --text-light: #64748b;
+
+  --primary-accent: #818cf8;
+  --primary-hover: #6366f1;
+  --primary-gradient: linear-gradient(135deg, #818cf8 0%, #4f46e5 100%);
+  --secondary-accent: #22d3ee;
+  --pink-accent: #f472b6;
+  --danger-accent: #f87171;
+  --success-accent: #34d399;
+
+  /* Dark Neumorphic Shadows */
+  --neu-light: #1e2330;
+  --neu-dark: #0a0c12;
+
+  --neu-flat: 8px 8px 18px var(--neu-dark), -8px -8px 18px var(--neu-light);
+  --neu-flat-sm: 4px 4px 10px var(--neu-dark), -4px -4px 10px var(--neu-light);
+  --neu-flat-lg: 16px 16px 32px var(--neu-dark), -16px -16px 32px var(--neu-light);
+
+  --neu-pressed: inset 4px 4px 8px var(--neu-dark), inset -4px -4px 8px var(--neu-light);
+  --neu-pressed-sm: inset 2px 2px 5px var(--neu-dark), inset -2px -2px 5px var(--neu-light);
+
+  --neu-hover: 12px 12px 24px var(--neu-dark), -12px -12px 24px var(--neu-light);
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-dark: rgba(0, 0, 0, 0.4);
+
+  /* Skeleton Shimmer Tokens Dark */
+  --skeleton-base: #1b202c;
+  --skeleton-highlight: #283042;
+}
+
+/* Base Resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1, h2, h3, h4, h5, .brand-font {
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.025em;
+}
+
+/* ==========================================================================
+   NEOMORPHIC SURFACES & SHADOW UTILITIES
+   ========================================================================== */
+
+.neu-flat {
+  background-color: var(--surface-color);
+  box-shadow: var(--neu-flat);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.neu-flat-sm {
+  background-color: var(--surface-color);
+  box-shadow: var(--neu-flat-sm);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.neu-flat-lg {
+  background-color: var(--surface-color);
+  box-shadow: var(--neu-flat-lg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 28px;
+}
+
+.neu-pressed {
+  background-color: var(--surface-color);
+  box-shadow: var(--neu-pressed);
+  border: 1px solid var(--border-dark);
+  border-radius: 16px;
+}
+
+.neu-pressed-sm {
+  background-color: var(--surface-color);
+  box-shadow: var(--neu-pressed-sm);
+  border: 1px solid var(--border-dark);
+  border-radius: 12px;
+}
+
+/* Tactile Interactive Buttons */
+.neu-button {
+  background-color: var(--surface-color);
+  box-shadow: var(--neu-flat-sm);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  color: var(--text-main);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  font-family: inherit;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  user-select: none;
+  text-decoration: none;
+}
+
+.neu-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--neu-hover);
+  color: var(--primary-accent);
+}
+
+.neu-button:active,
+.neu-button.active {
+  transform: translateY(1px);
+  box-shadow: var(--neu-pressed-sm);
+  color: var(--primary-accent);
+}
+
+.neu-button-primary {
+  background: var(--primary-gradient) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35), var(--neu-flat-sm);
+  border: none !important;
+}
+
+.neu-button-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.45), var(--neu-hover);
+}
+
+.neu-button-primary:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Debossed Inset Inputs */
+.neu-input {
+  width: 100%;
+  background-color: var(--surface-color);
+  box-shadow: var(--neu-pressed-sm);
+  border: 1px solid var(--border-dark);
+  border-radius: 14px;
+  padding: 12px 18px;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.925rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.neu-input:focus {
+  border-color: var(--primary-accent);
+  box-shadow: var(--neu-pressed), 0 0 0 3px rgba(99, 102, 241, 0.18);
+}
+
+.neu-pill {
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border-subtle);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+/* ==========================================================================
+   NEOMORPHIC SKELETON LOADING ANIMATION
+   ========================================================================== */
+
+@keyframes neu-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.neu-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--skeleton-base) 0%,
+    var(--skeleton-highlight) 50%,
+    var(--skeleton-base) 100%
+  );
+  background-size: 200% 100%;
+  animation: neu-shimmer 1.8s infinite ease-in-out;
+  border-radius: 12px;
+  box-shadow: var(--neu-pressed-sm);
+}
+
+.neu-skeleton-card {
+  background-color: var(--surface-color);
+  box-shadow: var(--neu-flat);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+/* ==========================================================================
+   MASONRY RESPONSIVE PIN GRID
+   ========================================================================== */
+
+.pin-grid {
+  column-gap: 20px;
+  padding: 10px 0 40px 0;
+  width: 100%;
+  columns: 5 280px;
+}
+
+@media (max-width: 1536px) {
+  .pin-grid {
+    columns: 4 260px;
+    column-gap: 18px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .pin-grid {
+    columns: 3 240px;
+    column-gap: 16px;
+  }
+}
+
+@media (max-width: 820px) {
+  .pin-grid {
+    columns: 2 180px;
+    column-gap: 14px;
+    padding: 8px 0 30px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .pin-grid {
+    columns: 2 150px;
+    column-gap: 10px;
+    padding: 6px 0 24px 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .pin-grid {
+    columns: 1 100%;
+    column-gap: 0;
+  }
+}
+
+.pin-item {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 480px) {
+  .pin-item {
+    margin-bottom: 12px;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE UTILITIES & MOBILE ADJUSTMENTS
+   ========================================================================== */
+
+/* Navbar responsive adjustments */
+.nav-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  padding: 12px 16px;
+  margin: 12px 16px 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .nav-wrapper {
+    margin: 8px 8px 0 8px;
+    padding: 10px 12px;
+    gap: 8px;
+  }
+}
+
+/* Horizontal Scrollbar Hide */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom Scrollbar for Desktop */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--neu-dark);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-accent);
+}
+
+/* Modal Backdrop */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  overflow-y: auto;
+}
+
+@media (max-width: 640px) {
+  .modal-overlay {
+    padding: 8px;
+    align-items: flex-end;
+  }
+}
+
+/* Video Player container */
+.video-container {
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #000;
+}
